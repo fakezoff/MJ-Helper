@@ -722,6 +722,11 @@ imgui.OnFrame(
             NavButton(u8"Настройки", 4, activeTab)
             imgui.Separator()
 
+            imgui.SetCursorPos(imgui.ImVec2(5, 365))
+            if imgui.Button(fa["PAPER_PLANE"] .. u8(" ТГК (ВАЖНО)")) then
+                os.execute('start "" https://t.me/fakezoff')
+            end
+
             imgui.EndChild()
 
             imgui.SameLine()
@@ -1839,6 +1844,9 @@ local hi = function ()
     print("/log - переключение вывода сообщений в консоль")
     print("/siren - переключение сирены")
     print("/mj - меню основного функционала скрипта")
+
+    sendMJHelperMessage("Обновления скрипта в телеграм боте - https://t.me/nelsontoolsbot")
+    sendMJHelperMessage("Поддержи создателя подпиской - https://t.me/fakezoff")
 end
 
 addEventHandler("onReceivePacket", function (id, bs)
