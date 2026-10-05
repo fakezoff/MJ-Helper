@@ -83,15 +83,15 @@ local buttonAnims = {}
 local listAnims = {}
 
 local int_item_departament_from = imgui.new.int(0)
-local item_list_departament_from = {u8("ЛСПД"), u8("СФПД"), u8("ЛВПД"), u8("ФБР"), u8("РКШД"), u8("СВАТ")}
+local item_list_departament_from = {u8("Р›РЎРџР”"), u8("РЎР¤РџР”"), u8("Р›Р’РџР”"), u8("Р¤Р‘Р "), u8("Р РљРЁР”"), u8("РЎР’РђРў")}
 local ImItemsDepartamentFrom = imgui.new["const char*"][#item_list_departament_from](item_list_departament_from)
 
 local int_item_departament_to = imgui.new.int(0)
-local item_list_departament_to = {u8("ОГП"), u8("ГКА"), u8("ЛСПД"), u8("СФПД"), u8("ЛВПД"), u8("РКШД"), u8("СВАТ"), u8("ФБР"), u8("ЛСа"), u8("СФа"), u8("ТСР"), u8("ЛСМЦ"), u8("СФМЦ"), u8("ЛВМЦ"), u8("ЦЛ"), u8("СМИ ЛС"), u8("СМИ СФ"), u8("СМИ ЛВ")}
+local item_list_departament_to = {u8("РћР“Рџ"), u8("Р“РљРђ"), u8("Р›РЎРџР”"), u8("РЎР¤РџР”"), u8("Р›Р’РџР”"), u8("Р РљРЁР”"), u8("РЎР’РђРў"), u8("Р¤Р‘Р "), u8("Р›РЎР°"), u8("РЎР¤Р°"), u8("РўРЎР "), u8("Р›РЎРњР¦"), u8("РЎР¤РњР¦"), u8("Р›Р’РњР¦"), u8("Р¦Р›"), u8("РЎРњР Р›РЎ"), u8("РЎРњР РЎР¤"), u8("РЎРњР Р›Р’")}
 local ImItemsDepartamentTo = imgui.new["const char*"][#item_list_departament_to](item_list_departament_to)
 
 local int_item_departament_location = imgui.new.int(0)
-local item_list_departament_location = {u8("ЛСПД"), u8("СФПД"), u8("ЛВПД"), u8("ФБР"), u8("РКШД"), u8("СВАТ")}
+local item_list_departament_location = {u8("Р›РЎРџР”"), u8("РЎР¤РџР”"), u8("Р›Р’РџР”"), u8("Р¤Р‘Р "), u8("Р РљРЁР”"), u8("РЎР’РђРў")}
 local ImItemsDepartamentLocation = imgui.new["const char*"][#item_list_departament_location](item_list_departament_location)
 
 local activeTab = imgui.new.int(1)
@@ -119,25 +119,25 @@ local binds = {
 }
 local text_for_departament = {
     {
-        text_departament = "Адвоката в допросную {location}.",
-        text_for_player = "Адвокат вызван. Время вызова: {time}. Время на приезд, после принятия вызова: 5 минут.",
+        text_departament = "РђРґРІРѕРєР°С‚Р° РІ РґРѕРїСЂРѕСЃРЅСѓСЋ {location}.",
+        text_for_player = "РђРґРІРѕРєР°С‚ РІС‹Р·РІР°РЅ. Р’СЂРµРјСЏ РІС‹Р·РѕРІР°: {time}. Р’СЂРµРјСЏ РЅР° РїСЂРёРµР·Рґ, РїРѕСЃР»Рµ РїСЂРёРЅСЏС‚РёСЏ РІС‹Р·РѕРІР°: 5 РјРёРЅСѓС‚.",
     },
     {
-        text_departament = "Прокурора в допросную {location}.",
-        text_for_player = "Прокурор вызван. Время вызова: {time}. Время на приезд, после принятия вызова: 10 минут.",
+        text_departament = "РџСЂРѕРєСѓСЂРѕСЂР° РІ РґРѕРїСЂРѕСЃРЅСѓСЋ {location}.",
+        text_for_player = "РџСЂРѕРєСѓСЂРѕСЂ РІС‹Р·РІР°РЅ. Р’СЂРµРјСЏ РІС‹Р·РѕРІР°: {time}. Р’СЂРµРјСЏ РЅР° РїСЂРёРµР·Рґ, РїРѕСЃР»Рµ РїСЂРёРЅСЏС‚РёСЏ РІС‹Р·РѕРІР°: 10 РјРёРЅСѓС‚.",
     },
     {
-        text_departament = "Начальство в допросную {location}.",
-        text_for_player = "Начальство вызвано. Время вызова: {time}. Время на приезд, после принятия вызова: 10 минут.",
+        text_departament = "РќР°С‡Р°Р»СЊСЃС‚РІРѕ РІ РґРѕРїСЂРѕСЃРЅСѓСЋ {location}.",
+        text_for_player = "РќР°С‡Р°Р»СЊСЃС‚РІРѕ РІС‹Р·РІР°РЅРѕ. Р’СЂРµРјСЏ РІС‹Р·РѕРІР°: {time}. Р’СЂРµРјСЏ РЅР° РїСЂРёРµР·Рґ, РїРѕСЃР»Рµ РїСЂРёРЅСЏС‚РёСЏ РІС‹Р·РѕРІР°: 10 РјРёРЅСѓС‚.",
     }
 }
 
 local afind = false
 local afindErrors = {
-    "^%[Ошибка%] Команда доступна с 5 ранга",
-    "^%[Ошибка%] Игрок находится в каком%-то здании",
-    "^%[Ошибка%] Нельзя применить действие на администрации.",
-    "^%[Ошибка%] Вы не на дежурстве"
+    "^%[РћС€РёР±РєР°%] РљРѕРјР°РЅРґР° РґРѕСЃС‚СѓРїРЅР° СЃ 5 СЂР°РЅРіР°",
+    "^%[РћС€РёР±РєР°%] РРіСЂРѕРє РЅР°С…РѕРґРёС‚СЃСЏ РІ РєР°РєРѕРј%-С‚Рѕ Р·РґР°РЅРёРё",
+    "^%[РћС€РёР±РєР°%] РќРµР»СЊР·СЏ РїСЂРёРјРµРЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ РЅР° Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё.",
+    "^%[РћС€РёР±РєР°%] Р’С‹ РЅРµ РЅР° РґРµР¶СѓСЂСЃС‚РІРµ"
 }
 
 local moveSearchedWindow = false
@@ -218,7 +218,7 @@ local loadConfig = function ()
 end
 
 local lower = function (str)
-    return str:gsub("А", "а"):gsub("Б", "б"):gsub("В", "в"):gsub("Г", "г"):gsub("Д", "д"):gsub("Е", "е"):gsub("Ё", "ё"):gsub("Ж", "ж"):gsub("З", "з"):gsub("И", "и"):gsub("Й", "й"):gsub("К", "к"):gsub("Л", "л"):gsub("М", "м"):gsub("Н", "н"):gsub("О", "о"):gsub("П", "п"):gsub("Р", "р"):gsub("С", "с"):gsub("Т", "т"):gsub("У", "у"):gsub("Ф", "ф"):gsub("Х", "х"):gsub("Ц", "ц"):gsub("Ч", "ч"):gsub("Ш", "ш"):gsub("Щ", "щ"):gsub("Ъ", "ъ"):gsub("Ы", "ы"):gsub("Ь", "ь"):gsub("Э", "э"):gsub("Ю", "ю"):gsub("Я", "я")
+    return str:gsub("Рђ", "Р°"):gsub("Р‘", "Р±"):gsub("Р’", "РІ"):gsub("Р“", "Рі"):gsub("Р”", "Рґ"):gsub("Р•", "Рµ"):gsub("РЃ", "С‘"):gsub("Р–", "Р¶"):gsub("Р—", "Р·"):gsub("Р", "Рё"):gsub("Р™", "Р№"):gsub("Рљ", "Рє"):gsub("Р›", "Р»"):gsub("Рњ", "Рј"):gsub("Рќ", "РЅ"):gsub("Рћ", "Рѕ"):gsub("Рџ", "Рї"):gsub("Р ", "СЂ"):gsub("РЎ", "СЃ"):gsub("Рў", "С‚"):gsub("РЈ", "Сѓ"):gsub("Р¤", "С„"):gsub("РҐ", "С…"):gsub("Р¦", "С†"):gsub("Р§", "С‡"):gsub("РЁ", "С€"):gsub("Р©", "С‰"):gsub("РЄ", "СЉ"):gsub("Р«", "С‹"):gsub("Р¬", "СЊ"):gsub("Р­", "СЌ"):gsub("Р®", "СЋ"):gsub("РЇ", "СЏ")
 end
 
 local toHEX = function (r, g, b)
@@ -241,7 +241,7 @@ local keyNames = function (keys)
 
         return table.concat(keysNames, " + ")
     else
-        return "Нет"
+        return "РќРµС‚"
     end
 end
 
@@ -477,7 +477,7 @@ imgui.CheckboxHint = function (text, checkbox, hint, func)
 end
 
 imgui.CheckboxRedact = function ()
-    imgui.CheckboxHint(u8("Режим редактирования"), config.ui.bools.redactMode, u8("Включите этот режим, чтобы редактировать законодательство"), function ()
+    imgui.CheckboxHint(u8("Р РµР¶РёРј СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ"), config.ui.bools.redactMode, u8("Р’РєР»СЋС‡РёС‚Рµ СЌС‚РѕС‚ СЂРµР¶РёРј, С‡С‚РѕР±С‹ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р·Р°РєРѕРЅРѕРґР°С‚РµР»СЊСЃС‚РІРѕ"), function ()
         loadConfig()
         saveConfig()
     end)
@@ -608,7 +608,7 @@ local OfferMenu = (function ()
         imgui.PushStyleVarFloat(imgui.StyleVar.WindowRounding, 10.0)
         imgui.PushStyleColor(imgui.Col.WindowBg, imgui.ImVec4(0.06, 0.06, 0.06, 0.9))
 
-        if imgui.Begin(u8("Предложение"), _, imgui.WindowFlags.NoDecoration + imgui.WindowFlags.NoMove + imgui.WindowFlags.NoSavedSettings) then
+        if imgui.Begin(u8("РџСЂРµРґР»РѕР¶РµРЅРёРµ"), _, imgui.WindowFlags.NoDecoration + imgui.WindowFlags.NoMove + imgui.WindowFlags.NoSavedSettings) then
             local dl, p = imgui.GetWindowDrawList(), imgui.GetWindowPos()
 
             imgui.PushFont(bigIcon)
@@ -644,8 +644,8 @@ local OfferMenu = (function ()
                 dl:AddText(imgui.ImVec2(x + keyBoxWidth + 10, p.y + 72 + (btnHeight - textSize.y) / 2), 0xDDFFFFFF, text)
             end
 
-            drawButton(p.x + 12, keyNames(offer.bindAccept), u8("Принять"))
-            drawButton(p.x + 24 + btnWidth, keyNames(offer.bindDecline), u8("Отказаться"))
+            drawButton(p.x + 12, keyNames(offer.bindAccept), u8("РџСЂРёРЅСЏС‚СЊ"))
+            drawButton(p.x + 24 + btnWidth, keyNames(offer.bindDecline), u8("РћС‚РєР°Р·Р°С‚СЊСЃСЏ"))
 
             imgui.End()
         end
@@ -713,17 +713,17 @@ imgui.OnFrame(
         if imgui.Begin(u8("MJ-Helper"), config.ui.window.main, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
             imgui.BeginChild("SideMenu", imgui.ImVec2(160, 0), true, imgui.WindowFlags.NoScrollbar)
 
-            NavButton(u8"Департамент", 1, activeTab)
+            NavButton(u8"Р”РµРїР°СЂС‚Р°РјРµРЅС‚", 1, activeTab)
             imgui.Separator()
-            NavButton(u8"Мегафон", 2, activeTab)
+            NavButton(u8"РњРµРіР°С„РѕРЅ", 2, activeTab)
             imgui.Separator()
-            NavButton(u8"Таймеры", 3, activeTab)
+            NavButton(u8"РўР°Р№РјРµСЂС‹", 3, activeTab)
             imgui.Separator()
-            NavButton(u8"Настройки", 4, activeTab)
+            NavButton(u8"РќР°СЃС‚СЂРѕР№РєРё", 4, activeTab)
             imgui.Separator()
 
             imgui.SetCursorPos(imgui.ImVec2(5, 365))
-            if imgui.Button(fa["PAPER_PLANE"] .. u8(" ТГК (ВАЖНО)")) then
+            if imgui.Button(fa["PAPER_PLANE"] .. u8(" РўР“Рљ (Р’РђР–РќРћ)")) then
                 os.execute('start "" https://t.me/fakezoff')
             end
 
@@ -737,34 +737,34 @@ imgui.OnFrame(
                 local categories = {
                     departament = {
                         {
-                            name = "Адвокат",
+                            name = "РђРґРІРѕРєР°С‚",
                             text_departament = text_for_departament[1].text_departament,
                             text_for_player = text_for_departament[1].text_for_player,
                             departament_selection = 1,
                             timer = {
-                                name = "Адвокат",
+                                name = "РђРґРІРѕРєР°С‚",
                                 time = 180,
                                 active = true
                             },
                         },
                         {
-                            name = "Прокурор",
+                            name = "РџСЂРѕРєСѓСЂРѕСЂ",
                             text_departament = text_for_departament[2].text_departament,
                             text_for_player = text_for_departament[2].text_for_player,
                             departament_selection = 0,
                             timer = {
-                                name = "Прокурор",
+                                name = "РџСЂРѕРєСѓСЂРѕСЂ",
                                 time = 300,
                                 active = true
                             }
                         },
                         {
-                            name = "Начальство",
+                            name = "РќР°С‡Р°Р»СЊСЃС‚РІРѕ",
                             text_departament = text_for_departament[3].text_departament,
                             text_for_player = text_for_departament[3].text_for_player,
                             departament_selection = 2,
                             timer = {
-                                name = "Начальство",
+                                name = "РќР°С‡Р°Р»СЊСЃС‚РІРѕ",
                                 time = 300,
                                 active = true
                             }
@@ -795,13 +795,13 @@ imgui.OnFrame(
                         imgui.SetWindowSizeVec2(imgui.ImVec2(500, 340))
 
                         imgui.PushItemWidth(475)
-                        imgui.Text(u8("Нахождение:"))
+                        imgui.Text(u8("РќР°С…РѕР¶РґРµРЅРёРµ:"))
                         imgui.Combo("##selectFounding", int_item_departament_location, ImItemsDepartamentLocation, #item_list_departament_location)
 
-                        imgui.Text(u8("От:"))
+                        imgui.Text(u8("РћС‚:"))
                         imgui.Combo("##selectDepartamentFrom", int_item_departament_from, ImItemsDepartamentFrom, #item_list_departament_from)
 
-                        imgui.Text(u8("Кому:"))
+                        imgui.Text(u8("РљРѕРјСѓ:"))
                         imgui.Combo("##selectDepartamentTo", int_item_departament_to, ImItemsDepartamentTo, #item_list_departament_to)
                         imgui.PopItemWidth()
 
@@ -811,7 +811,7 @@ imgui.OnFrame(
 
                         imgui.Separator()
 
-                        if AnimButton(u8("Отправить"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                        if AnimButton(u8("РћС‚РїСЂР°РІРёС‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                             sampSendChat(message_departament:gsub("{location}", categories.functions.location()))
                             sampSendChat(category["text_for_player"]:gsub("{time}", categories.functions.time()))
 
@@ -819,13 +819,13 @@ imgui.OnFrame(
 
                             saveConfig()
 
-                            showNotification("success", "Сообщение в департамент отправлено!")
-                            sendMJHelperMessage("Сообщение в департамент отправлено!")
+                            showNotification("success", "РЎРѕРѕР±С‰РµРЅРёРµ РІ РґРµРїР°СЂС‚Р°РјРµРЅС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ!")
+                            sendMJHelperMessage("РЎРѕРѕР±С‰РµРЅРёРµ РІ РґРµРїР°СЂС‚Р°РјРµРЅС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ!")
 
                             imgui.CloseCurrentPopup()
                         end
 
-                        if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                        if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                             imgui.CloseCurrentPopup()
                         end
 
@@ -835,11 +835,11 @@ imgui.OnFrame(
 
                 imgui.Separator()
 
-                if AnimButton(u8("Редактирование"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 35)) then
-                    imgui.OpenPopup(u8("Редактирование"))
+                if AnimButton(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 35)) then
+                    imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ"))
                 end
 
-                if imgui.BeginPopupModal(u8("Редактирование"), _, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar) then
+                if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ"), _, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar) then
                     imgui.SetWindowSizeVec2(imgui.ImVec2(500, 220))
 
                     for index, category in pairs(categories.departament) do
@@ -847,20 +847,20 @@ imgui.OnFrame(
                             ffi.copy(config.ui.departament.text_departament, u8(category.text_departament))
                             ffi.copy(config.ui.departament.text_for_player, u8(category.text_for_player))
 
-                            imgui.OpenPopup(u8(string.format("Редактирование [%s]", category.name)))
+                            imgui.OpenPopup(u8(string.format("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ [%s]", category.name)))
                         end
 
-                        if imgui.BeginPopupModal(u8(string.format("Редактирование [%s]", category.name)), _, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar) then
+                        if imgui.BeginPopupModal(u8(string.format("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ [%s]", category.name)), _, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar) then
                             imgui.SetWindowSizeVec2(imgui.ImVec2(750, 210))
 
                             imgui.PushItemWidth(imgui.GetContentRegionAvail().x)
-                            imgui.Text(u8("Сообщение в департамент:"))
+                            imgui.Text(u8("РЎРѕРѕР±С‰РµРЅРёРµ РІ РґРµРїР°СЂС‚Р°РјРµРЅС‚:"))
                             if imgui.InputText("##textDepartament", config.ui.departament.text_departament, 256) then
                                 text_for_departament[index].text_departament = u8:decode(ffi.string(config.ui.departament.text_departament))
                                 saveConfig()
                             end
 
-                            imgui.Text(u8("Сообщение для игрока:"))
+                            imgui.Text(u8("РЎРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РёРіСЂРѕРєР°:"))
                             if imgui.InputText("##textForPlayer", config.ui.departament.text_for_player, 256) then
                                 text_for_departament[index].text_for_player = u8:decode(ffi.string(config.ui.departament.text_for_player))
                                 saveConfig()
@@ -869,7 +869,7 @@ imgui.OnFrame(
 
                             imgui.Separator()
 
-                            if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                            if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                                 imgui.CloseCurrentPopup()
                             end
 
@@ -879,7 +879,7 @@ imgui.OnFrame(
 
                     imgui.Separator()
 
-                    if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                    if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                         imgui.CloseCurrentPopup()
                     end
 
@@ -888,7 +888,7 @@ imgui.OnFrame(
             elseif activeTab[0] == 2 then
                 imgui.PushItemWidth(imgui.GetContentRegionAvail().x - 60)
 
-                if imgui.ColorEdit3(u8("Мегафон"), config.ui.palitre.megafon) then
+                if imgui.ColorEdit3(u8("РњРµРіР°С„РѕРЅ"), config.ui.palitre.megafon) then
                     saveConfig()
                 end
 
@@ -903,8 +903,8 @@ imgui.OnFrame(
 
                             saveConfig()
 
-                            showNotification("info", string.format("Таймер \"%s\" %s!", timer.name, timer.active and "включен" or "отключён"))
-                            sendMJHelperMessage(string.format("Таймер \"%s\" %s!", timer.name, timer.active and "включен" or "отключён"))
+                            showNotification("info", string.format("РўР°Р№РјРµСЂ \"%s\" %s!", timer.name, timer.active and "РІРєР»СЋС‡РµРЅ" or "РѕС‚РєР»СЋС‡С‘РЅ"))
+                            sendMJHelperMessage(string.format("РўР°Р№РјРµСЂ \"%s\" %s!", timer.name, timer.active and "РІРєР»СЋС‡РµРЅ" or "РѕС‚РєР»СЋС‡С‘РЅ"))
                         end
 
                         drawList(width, 0.835, 0, 2, 2, u8(timer.name), os.date("!%H:%M:%S", timer.time))
@@ -914,25 +914,25 @@ imgui.OnFrame(
                             ffi.copy(config.ui.timer.time, tostring(timer.time))
                             config.ui.timer.active[0] = timer.active
 
-                            imgui.OpenPopup(u8("Редактирование ##" .. index))
+                            imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. index))
                         end
 
-                        if imgui.BeginPopupModal(u8("Редактирование ##" .. index), _, imgui.WindowFlags.NoResize) then
+                        if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. index), _, imgui.WindowFlags.NoResize) then
                             imgui.SetWindowSizeVec2(imgui.ImVec2(500, 295))
 
                             imgui.PushItemWidth(475)
-                            imgui.Text(u8("Время (секунды):"))
+                            imgui.Text(u8("Р’СЂРµРјСЏ (СЃРµРєСѓРЅРґС‹):"))
                             imgui.InputText(u8("##time"), config.ui.timer.time, 8)
 
                             imgui.Separator()
 
-                            imgui.Text(u8("Название:"))
+                            imgui.Text(u8("РќР°Р·РІР°РЅРёРµ:"))
                             imgui.InputText(u8("##name"), config.ui.timer.name, 128)
                             imgui.PopItemWidth()
 
                             imgui.Separator()
 
-                            if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                            if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                                 timer.name = u8:decode(ffi.string(config.ui.timer.name))
                                 timer.time = tonumber(u8:decode(ffi.string(config.ui.timer.time)))
                                 timer.active = config.ui.timer.active[0]
@@ -942,7 +942,7 @@ imgui.OnFrame(
                                 imgui.CloseCurrentPopup()
                             end
 
-                            if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                            if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                                 table.remove(timers, index)
 
                                 saveConfig()
@@ -950,7 +950,7 @@ imgui.OnFrame(
                                 imgui.CloseCurrentPopup()
                             end
 
-                            if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                            if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                                 imgui.CloseCurrentPopup()
                             end
 
@@ -960,14 +960,14 @@ imgui.OnFrame(
                         imgui.Separator()
                     end
                 else
-                    imgui.Text(u8("Таймеров нет!"))
+                    imgui.Text(u8("РўР°Р№РјРµСЂРѕРІ РЅРµС‚!"))
 
                     imgui.Separator()
                 end
 
-                if AnimButton(u8("Добавить таймер"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
+                if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ С‚Р°Р№РјРµСЂ"), imgui.ImVec2(imgui.GetContentRegionAvail().x, 30)) then
                     table.insert(timers, {
-                        name = "Новый таймер",
+                        name = "РќРѕРІС‹Р№ С‚Р°Р№РјРµСЂ",
                         time = 60,
                         active = false
                     })
@@ -976,36 +976,36 @@ imgui.OnFrame(
                 end
             elseif activeTab[0] == 4 then
                 if imgui.BeginTabBar("SettingsTabs") then
-                    if imgui.BeginTabItem(u8("Основные")) then
-                        imgui.CheckboxHint(u8("Авто боди-камера"), config.ui.bools.autoBodyCam, u8("При спавне боди-камера будет включаться автоматически"), function ()
+                    if imgui.BeginTabItem(u8("РћСЃРЅРѕРІРЅС‹Рµ")) then
+                        imgui.CheckboxHint(u8("РђРІС‚Рѕ Р±РѕРґРё-РєР°РјРµСЂР°"), config.ui.bools.autoBodyCam, u8("РџСЂРё СЃРїР°РІРЅРµ Р±РѕРґРё-РєР°РјРµСЂР° Р±СѓРґРµС‚ РІРєР»СЋС‡Р°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё"), function ()
                             saveConfig()
                         end)
 
-                        imgui.CheckboxHint(u8("Авто /take при изъятии"), config.ui.bools.autoTake, u8("При изъятии чего-либо незаконного у игрока - /take будет отправлен автоматически"), function ()
+                        imgui.CheckboxHint(u8("РђРІС‚Рѕ /take РїСЂРё РёР·СЉСЏС‚РёРё"), config.ui.bools.autoTake, u8("РџСЂРё РёР·СЉСЏС‚РёРё С‡РµРіРѕ-Р»РёР±Рѕ РЅРµР·Р°РєРѕРЅРЅРѕРіРѕ Сѓ РёРіСЂРѕРєР° - /take Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё"), function ()
                             saveConfig()
                         end)
 
-                        imgui.CheckboxHint(u8("Авто /pursuit"), config.ui.bools.autoPursuit, u8("После окончания /pursuit он автоматически будет прописываться заново"), function ()
+                        imgui.CheckboxHint(u8("РђРІС‚Рѕ /pursuit"), config.ui.bools.autoPursuit, u8("РџРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ /pursuit РѕРЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р±СѓРґРµС‚ РїСЂРѕРїРёСЃС‹РІР°С‚СЊСЃСЏ Р·Р°РЅРѕРІРѕ"), function ()
                             saveConfig()
                         end)
 
-                        imgui.CheckboxHint(u8("Отключение эффектов от /pursuit"), config.ui.bools.offEffectPursuit, u8("При включении/выключении /pursuit эффекты от него выключатся"), function ()
+                        imgui.CheckboxHint(u8("РћС‚РєР»СЋС‡РµРЅРёРµ СЌС„С„РµРєС‚РѕРІ РѕС‚ /pursuit"), config.ui.bools.offEffectPursuit, u8("РџСЂРё РІРєР»СЋС‡РµРЅРёРё/РІС‹РєР»СЋС‡РµРЅРёРё /pursuit СЌС„С„РµРєС‚С‹ РѕС‚ РЅРµРіРѕ РІС‹РєР»СЋС‡Р°С‚СЃСЏ"), function ()
                             saveConfig()
                         end)
 
-                        imgui.CheckboxHint(u8("Старый стиль мегафона"), config.ui.bools.customMegaphone, u8("При включении старый стиль мегафона (желтого цвета) восстановится\nПри этом, можно будет сменить цвет мегафона"), function ()
+                        imgui.CheckboxHint(u8("РЎС‚Р°СЂС‹Р№ СЃС‚РёР»СЊ РјРµРіР°С„РѕРЅР°"), config.ui.bools.customMegaphone, u8("РџСЂРё РІРєР»СЋС‡РµРЅРёРё СЃС‚Р°СЂС‹Р№ СЃС‚РёР»СЊ РјРµРіР°С„РѕРЅР° (Р¶РµР»С‚РѕРіРѕ С†РІРµС‚Р°) РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЃСЏ\nРџСЂРё СЌС‚РѕРј, РјРѕР¶РЅРѕ Р±СѓРґРµС‚ СЃРјРµРЅРёС‚СЊ С†РІРµС‚ РјРµРіР°С„РѕРЅР°"), function ()
                             saveConfig()
                         end)
 
                         imgui.EndTabItem()
                     end
 
-                    if imgui.BeginTabItem(u8("Бинды")) then
-                        showHotkey("mainWindow", "Главное меню")
-                        showHotkey("siren", "Сирена")
-                        showHotkey("offerAccept", "Принять /offer")
-                        showHotkey("offerDecline", "Отказаться от /offer")
-                        showHotkey("searchedWindow", "Перемещение окна /awanted")
+                    if imgui.BeginTabItem(u8("Р‘РёРЅРґС‹")) then
+                        showHotkey("mainWindow", "Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ")
+                        showHotkey("siren", "РЎРёСЂРµРЅР°")
+                        showHotkey("offerAccept", "РџСЂРёРЅСЏС‚СЊ /offer")
+                        showHotkey("offerDecline", "РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ /offer")
+                        showHotkey("searchedWindow", "РџРµСЂРµРјРµС‰РµРЅРёРµ РѕРєРЅР° /awanted")
 
                         imgui.EndTabItem()
                     end
@@ -1035,14 +1035,14 @@ imgui.OnFrame(
         imgui.SetNextWindowSize(imgui.ImVec2(sizeX, sizeY), imgui.Cond.FirstUseEver)
 
         imgui.PushFont(font)
-        if imgui.Begin(u8("Умный розыск"), config.ui.window.wanted, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
+        if imgui.Begin(u8("РЈРјРЅС‹Р№ СЂРѕР·С‹СЃРє"), config.ui.window.wanted, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
             imgui.CheckboxRedact()
 
             if #wanteds ~= 0 then
                 local searchText = u8:decode(ffi.string(config.ui.search.description))
 
                 imgui.PushItemWidth(725)
-                imgui.InputTextWithHint("##search", u8("Поиск статьи..."), config.ui.search.description, 256)
+                imgui.InputTextWithHint("##search", u8("РџРѕРёСЃРє СЃС‚Р°С‚СЊРё..."), config.ui.search.description, 256)
                 imgui.PopItemWidth()
 
                 imgui.Separator()
@@ -1053,7 +1053,7 @@ imgui.OnFrame(
                     local is_match = #searchText == 0 or string.find(lower(wanted.description), lower(searchText))
 
                     RenderAnimated("wanted_group_" .. indexWanted, is_match, alpha, function ()
-                        local is_open = imgui.CollapsingHeader(u8(string.format("Статья %s. %s ##" .. indexWanted, wanted.section, wanted.description)))
+                        local is_open = imgui.CollapsingHeader(u8(string.format("РЎС‚Р°С‚СЊСЏ %s. %s ##" .. indexWanted, wanted.section, wanted.description)))
 
                         RenderAnimated("wanted_child_" .. indexWanted, is_open, alpha, function ()
                             for indexChildren, children in pairs(wanted.children) do
@@ -1078,31 +1078,31 @@ imgui.OnFrame(
                                     ffi.copy(config.ui.punishment.description, u8(children.description))
                                     ffi.copy(config.ui.punishment.level, u8(children.level))
 
-                                    imgui.OpenPopup(u8("Редактирование ##" .. u8(children.section)))
+                                    imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. u8(children.section)))
                                 end
 
-                                if imgui.BeginPopupModal(u8("Редактирование ##" .. u8(children.section)), _, imgui.WindowFlags.NoResize) then
+                                if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. u8(children.section)), _, imgui.WindowFlags.NoResize) then
                                     imgui.SetWindowSizeVec2(imgui.ImVec2(750, config.ui.bools.redactMode[0] and 490 or 405))
 
                                     imgui.PushItemWidth(725)
-                                    imgui.Text(u8("Статья:"))
+                                    imgui.Text(u8("РЎС‚Р°С‚СЊСЏ:"))
                                     imgui.InputText("##section_children", config.ui.punishment.section, 16)
 
                                     imgui.Separator()
 
-                                    imgui.Text(u8("Описание:"))
+                                    imgui.Text(u8("РћРїРёСЃР°РЅРёРµ:"))
                                     imgui.InputTextMultiline("##description_children", config.ui.punishment.description, 256)
 
                                     imgui.Separator()
 
-                                    imgui.Text(u8("Уровень розыска:"))
+                                    imgui.Text(u8("РЈСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°:"))
                                     imgui.InputText("##level_children", config.ui.punishment.level, 2)
                                     imgui.PopItemWidth()
 
                                     imgui.Separator()
 
                                     if config.ui.bools.redactMode[0] then
-                                        if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                        if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                             children.section = u8:decode(ffi.string(config.ui.punishment.section))
                                             children.description = u8:decode(ffi.string(config.ui.punishment.description))
                                             children.level = u8:decode(ffi.string(config.ui.punishment.level))
@@ -1112,7 +1112,7 @@ imgui.OnFrame(
                                             imgui.CloseCurrentPopup()
                                         end
 
-                                        if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                        if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                             table.remove(wanted.children, indexChildren)
 
                                             if #wanted.children == 0 then
@@ -1125,7 +1125,7 @@ imgui.OnFrame(
                                         end
                                     end
 
-                                    if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                    if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                         imgui.CloseCurrentPopup()
                                     end
 
@@ -1136,39 +1136,39 @@ imgui.OnFrame(
                             if config.ui.bools.redactMode[0] then
                                 imgui.Separator()
 
-                                if AnimButton(u8("Добавить подпункт"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                                if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ РїРѕРґРїСѓРЅРєС‚"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                                     table.insert(wanted.children, {
                                         section = "1.2",
-                                        description = "Описание",
+                                        description = "РћРїРёСЃР°РЅРёРµ",
                                         level = 1
                                     })
 
                                     saveConfig()
                                 end
 
-                                if AnimButton(u8("Изменить группу"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                                if AnimButton(u8("РР·РјРµРЅРёС‚СЊ РіСЂСѓРїРїСѓ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                                     ffi.copy(config.ui.punishment.section, u8(wanted.section))
                                     ffi.copy(config.ui.punishment.description, u8(wanted.description))
 
-                                    imgui.OpenPopup(u8("Редактирование ##" .. indexWanted))
+                                    imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexWanted))
                                 end
 
-                                if imgui.BeginPopupModal(u8("Редактирование ##" .. indexWanted), _, imgui.WindowFlags.NoResize) then
+                                if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexWanted), _, imgui.WindowFlags.NoResize) then
                                     imgui.SetWindowSizeVec2(imgui.ImVec2(500, 425))
 
                                     imgui.PushItemWidth(475)
-                                    imgui.Text(u8("Статья:"))
+                                    imgui.Text(u8("РЎС‚Р°С‚СЊСЏ:"))
                                     imgui.InputText("##section", config.ui.punishment.section, 16)
 
                                     imgui.Separator()
 
-                                    imgui.Text(u8("Описание:"))
+                                    imgui.Text(u8("РћРїРёСЃР°РЅРёРµ:"))
                                     imgui.InputTextMultiline("##description", config.ui.punishment.description, 256)
                                     imgui.PopItemWidth()
 
                                     imgui.Separator()
 
-                                    if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                    if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                         wanted.section = u8:decode(ffi.string(config.ui.punishment.section))
                                         wanted.description = u8:decode(ffi.string(config.ui.punishment.description))
 
@@ -1177,7 +1177,7 @@ imgui.OnFrame(
                                         imgui.CloseCurrentPopup()
                                     end
 
-                                    if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                    if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                         table.remove(wanteds, indexWanted)
 
                                         saveConfig()
@@ -1185,14 +1185,14 @@ imgui.OnFrame(
                                         imgui.CloseCurrentPopup()
                                     end
 
-                                    if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                    if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                         imgui.CloseCurrentPopup()
                                     end
 
                                     imgui.End()
                                 end
 
-                                if AnimButton(u8("Удалить группу"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                                if AnimButton(u8("РЈРґР°Р»РёС‚СЊ РіСЂСѓРїРїСѓ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                                     table.remove(wanteds, indexWanted)
 
                                     saveConfig()
@@ -1203,14 +1203,14 @@ imgui.OnFrame(
                 end
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить статью"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СЊСЋ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                         table.insert(wanteds, {
-                            section = "1.1 УК",
-                            description = "Описание",
+                            section = "1.1 РЈРљ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                             children = {
                                 {
-                                    section = "1.2 УК",
-                                    description = "Описание",
+                                    section = "1.2 РЈРљ",
+                                    description = "РћРїРёСЃР°РЅРёРµ",
                                     level = 1
                                 }
                             }
@@ -1221,17 +1221,17 @@ imgui.OnFrame(
 
                 imgui.EndChild()
             else
-                imgui.Text(u8("УК не настроено!"))
+                imgui.Text(u8("РЈРљ РЅРµ РЅР°СЃС‚СЂРѕРµРЅРѕ!"))
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить статью"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СЊСЋ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                         table.insert(wanteds, {
-                            section = "1.1 УК",
-                            description = "Описание",
+                            section = "1.1 РЈРљ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                             children = {
                                 {
-                                    section = "1.2 УК",
-                                    description = "Описание",
+                                    section = "1.2 РЈРљ",
+                                    description = "РћРїРёСЃР°РЅРёРµ",
                                     level = 1
                                 }
                             }
@@ -1261,14 +1261,14 @@ imgui.OnFrame(
         imgui.SetNextWindowSize(imgui.ImVec2(sizeX, sizeY), imgui.Cond.FirstUseEver)
 
         imgui.PushFont(font)
-        if imgui.Begin(u8("Умное ФП"), config.ui.window.federal, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
+        if imgui.Begin(u8("РЈРјРЅРѕРµ Р¤Рџ"), config.ui.window.federal, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
             imgui.CheckboxRedact()
 
             if #federals ~= 0 then
                 local searchText = u8:decode(ffi.string(config.ui.search.description))
 
                 imgui.PushItemWidth(725)
-                imgui.InputTextWithHint("##search", u8("Поиск статьи..."), config.ui.search.description, 256)
+                imgui.InputTextWithHint("##search", u8("РџРѕРёСЃРє СЃС‚Р°С‚СЊРё..."), config.ui.search.description, 256)
                 imgui.PopItemWidth()
 
                 imgui.Separator()
@@ -1299,26 +1299,26 @@ imgui.OnFrame(
                             ffi.copy(config.ui.punishment.section, u8(federal.section))
                             ffi.copy(config.ui.punishment.description, u8(federal.description))
 
-                            imgui.OpenPopup(u8("Редактирование ##" .. indexFederal))
+                            imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexFederal))
                         end
 
-                        if imgui.BeginPopupModal(u8("Редактирование ##" .. indexFederal), _, imgui.WindowFlags.NoResize) then
+                        if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexFederal), _, imgui.WindowFlags.NoResize) then
                             imgui.SetWindowSizeVec2(imgui.ImVec2(750, config.ui.bools.redactMode[0] and 425 or 335))
 
                             imgui.PushItemWidth(725)
-                            imgui.Text(u8("Статья:"))
+                            imgui.Text(u8("РЎС‚Р°С‚СЊСЏ:"))
                             imgui.InputText("##section_children", config.ui.punishment.section, 16)
 
                             imgui.Separator()
 
-                            imgui.Text(u8("Описание:"))
+                            imgui.Text(u8("РћРїРёСЃР°РЅРёРµ:"))
                             imgui.InputTextMultiline("##description_children", config.ui.punishment.description, 256)
                             imgui.PopItemWidth()
 
                             imgui.Separator()
 
                             if config.ui.bools.redactMode[0] then
-                                if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                     federal.section = u8:decode(ffi.string(config.ui.punishment.section))
                                     federal.description = u8:decode(ffi.string(config.ui.punishment.description))
 
@@ -1327,7 +1327,7 @@ imgui.OnFrame(
                                     imgui.CloseCurrentPopup()
                                 end
 
-                                if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                     table.remove(federals, indexFederal)
 
                                     saveConfig()
@@ -1336,7 +1336,7 @@ imgui.OnFrame(
                                 end
                             end
 
-                            if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                            if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                 imgui.CloseCurrentPopup()
                             end
 
@@ -1346,10 +1346,10 @@ imgui.OnFrame(
                 end
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                         table.insert(federals, {
-                            section = "1.1 ФП",
-                            description = "Описание",
+                            section = "1.1 Р¤Рџ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                         })
 
                         saveConfig()
@@ -1358,13 +1358,13 @@ imgui.OnFrame(
 
                 imgui.EndChild()
             else
-                imgui.Text(u8("ФП не настроено!"))
+                imgui.Text(u8("Р¤Рџ РЅРµ РЅР°СЃС‚СЂРѕРµРЅРѕ!"))
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить"), imgui.ImVec2(imgui.GetWindowSize().x - 10, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 10, 35)) then
                         table.insert(federals, {
-                            section = "1.1 ФП",
-                            description = "Описание",
+                            section = "1.1 Р¤Рџ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                         })
 
                         saveConfig()
@@ -1392,14 +1392,14 @@ imgui.OnFrame(
         imgui.SetNextWindowSize(imgui.ImVec2(sizeX, sizeY), imgui.Cond.FirstUseEver)
 
         imgui.PushFont(font)
-        if imgui.Begin(u8("Умная выдача штрафов"), config.ui.window.administrative, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
+        if imgui.Begin(u8("РЈРјРЅР°СЏ РІС‹РґР°С‡Р° С€С‚СЂР°С„РѕРІ"), config.ui.window.administrative, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar) then
             imgui.CheckboxRedact()
 
             if #administratives ~= 0 then
                 local searchText = u8:decode(ffi.string(config.ui.search.description))
 
                 imgui.PushItemWidth(725)
-                imgui.InputTextWithHint("##search", u8("Поиск статьи..."), config.ui.search.description, 256)
+                imgui.InputTextWithHint("##search", u8("РџРѕРёСЃРє СЃС‚Р°С‚СЊРё..."), config.ui.search.description, 256)
                 imgui.PopItemWidth()
 
                 imgui.Separator()
@@ -1431,31 +1431,31 @@ imgui.OnFrame(
                             ffi.copy(config.ui.punishment.description, u8(administrative.description))
                             ffi.copy(config.ui.punishment.ticket, u8(administrative.ticket))
 
-                            imgui.OpenPopup(u8("Редактирование ##" .. indexAdministrative))
+                            imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexAdministrative))
                         end
 
-                        if imgui.BeginPopupModal(u8("Редактирование ##" .. indexAdministrative), _, imgui.WindowFlags.NoResize) then
+                        if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. indexAdministrative), _, imgui.WindowFlags.NoResize) then
                             imgui.SetWindowSizeVec2(imgui.ImVec2(800, config.ui.bools.redactMode[0] and 490 or 405))
 
                             imgui.PushItemWidth(775)
-                            imgui.Text(u8("Статья:"))
+                            imgui.Text(u8("РЎС‚Р°С‚СЊСЏ:"))
                             imgui.InputText("##section", config.ui.punishment.section, 16)
 
                             imgui.Separator()
 
-                            imgui.Text(u8("Описание:"))
+                            imgui.Text(u8("РћРїРёСЃР°РЅРёРµ:"))
                             imgui.InputTextMultiline("##description", config.ui.punishment.description, 256)
 
                             imgui.Separator()
 
-                            imgui.Text(u8("Штраф:"))
+                            imgui.Text(u8("РЁС‚СЂР°С„:"))
                             imgui.InputText("##ticket", config.ui.punishment.ticket, 8)
                             imgui.PopItemWidth()
 
                             imgui.Separator()
 
                             if config.ui.bools.redactMode[0] then
-                                if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                     administrative.section = u8:decode(ffi.string(config.ui.punishment.section))
                                     administrative.description = u8:decode(ffi.string(config.ui.punishment.description))
                                     administrative.ticket = u8:decode(ffi.string(config.ui.punishment.ticket))
@@ -1465,7 +1465,7 @@ imgui.OnFrame(
                                     imgui.CloseCurrentPopup()
                                 end
 
-                                if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                                if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                     table.remove(administratives, indexAdministrative)
 
                                     saveConfig()
@@ -1474,7 +1474,7 @@ imgui.OnFrame(
                                 end
                             end
 
-                            if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                            if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                                 imgui.CloseCurrentPopup()
                             end
 
@@ -1484,10 +1484,10 @@ imgui.OnFrame(
                 end
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                         table.insert(administratives, {
-                            section = "1.1 АК",
-                            description = "Описание",
+                            section = "1.1 РђРљ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                             ticket = 100000
                         })
 
@@ -1497,13 +1497,13 @@ imgui.OnFrame(
 
                 imgui.EndChild()
             else
-                imgui.Text(u8("АК не настроено!"))
+                imgui.Text(u8("РђРљ РЅРµ РЅР°СЃС‚СЂРѕРµРЅРѕ!"))
 
                 if config.ui.bools.redactMode[0] then
-                    if AnimButton(u8("Добавить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
+                    if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 35)) then
                         table.insert(administratives, {
-                            section = "1.1 АК",
-                            description = "Описание",
+                            section = "1.1 РђРљ",
+                            description = "РћРїРёСЃР°РЅРёРµ",
                             ticket = 100000
                         })
 
@@ -1532,7 +1532,7 @@ imgui.OnFrame(
         imgui.SetNextWindowSize(imgui.ImVec2(sizeX, sizeY), imgui.Cond.FirstUseEver)
 
         imgui.PushFont(font)
-        if imgui.Begin(u8("Блокнот"), config.ui.window.notepad, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse) then
+        if imgui.Begin(u8("Р‘Р»РѕРєРЅРѕС‚"), config.ui.window.notepad, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse) then
             imgui.BeginChild("SidePanelNotepad", imgui.ImVec2(200, 0), true, imgui.WindowFlags.NoScrollbar)
 
             for index, value in pairs(notepad) do
@@ -1541,12 +1541,12 @@ imgui.OnFrame(
                 if imgui.IsItemClicked(1) then
                     ffi.copy(config.ui.notepad.title, u8(value.title))
 
-                    imgui.OpenPopup(u8("Редактирование ##" .. index))
+                    imgui.OpenPopup(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. index))
                 end
 
                 imgui.Separator()
 
-                if imgui.BeginPopupModal(u8("Редактирование ##" .. index), _, imgui.WindowFlags.NoResize) then
+                if imgui.BeginPopupModal(u8("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ##" .. index), _, imgui.WindowFlags.NoResize) then
                     imgui.SetWindowSizeVec2(imgui.ImVec2(500, 202))
 
                     imgui.PushItemWidth(475)
@@ -1555,7 +1555,7 @@ imgui.OnFrame(
 
                     imgui.Separator()
 
-                    if AnimButton(u8("Сохранить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                    if AnimButton(u8("РЎРѕС…СЂР°РЅРёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                         value.title = u8:decode(ffi.string(config.ui.notepad.title))
 
                         saveConfig()
@@ -1563,7 +1563,7 @@ imgui.OnFrame(
                         imgui.CloseCurrentPopup()
                     end
 
-                    if AnimButton(u8("Удалить"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                    if AnimButton(u8("РЈРґР°Р»РёС‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                         table.remove(notepad, index)
 
                         activeNoteTab[0] = #notepad
@@ -1573,7 +1573,7 @@ imgui.OnFrame(
                         imgui.CloseCurrentPopup()
                     end
 
-                    if AnimButton(u8("Закрыть"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
+                    if AnimButton(u8("Р—Р°РєСЂС‹С‚СЊ"), imgui.ImVec2(imgui.GetWindowSize().x - 25, 30)) then
                         imgui.CloseCurrentPopup()
                     end
 
@@ -1581,9 +1581,9 @@ imgui.OnFrame(
                 end
             end
 
-            if AnimButton(u8("Добавить запись"), imgui.ImVec2(-1, 35)) then
+            if AnimButton(u8("Р”РѕР±Р°РІРёС‚СЊ Р·Р°РїРёСЃСЊ"), imgui.ImVec2(-1, 35)) then
                 table.insert(notepad, {
-                    title = "Новая запись",
+                    title = "РќРѕРІР°СЏ Р·Р°РїРёСЃСЊ",
                     field = ""
                 })
 
@@ -1608,7 +1608,7 @@ imgui.OnFrame(
                     saveConfig()
                 end
             else
-                imgui.Text(u8("Нет записей!"))
+                imgui.Text(u8("РќРµС‚ Р·Р°РїРёСЃРµР№!"))
             end
 
             imgui.EndChild()
@@ -1628,7 +1628,7 @@ imgui.OnFrame(
         imgui.SetNextWindowPos(imgui.ImVec2(settingsSearchedWindow.x, settingsSearchedWindow.y), imgui.Cond.Always, imgui.ImVec2(0.5, 0.5))
 
         imgui.PushFont(font)
-        if imgui.Begin(u8("Список преступников"), config.ui.window.searched, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.AlwaysAutoResize + imgui.WindowFlags.NoScrollbar) then
+        if imgui.Begin(u8("РЎРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ"), config.ui.window.searched, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.AlwaysAutoResize + imgui.WindowFlags.NoScrollbar) then
             if imgui.GetIO().MouseClicked[2] then
                 player.HideCursor = not player.HideCursor
             end
@@ -1684,7 +1684,7 @@ imgui.OnFrame(
                     imgui.Separator()
                 end
             else
-                imgui.Text(u8("Не найдено преступников!"))
+                imgui.Text(u8("РќРµ РЅР°Р№РґРµРЅРѕ РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ!"))
             end
 
             imgui.End()
@@ -1697,8 +1697,8 @@ imgui.OnFrame(
 local registerCommandWithArgument = function (command, window)
     sampRegisterChatCommand(command, function (id)
         if #id == 0 then
-            showNotification("error", "ID не указан!")
-            return sendMJHelperMessage("ID не указан!")
+            showNotification("error", "ID РЅРµ СѓРєР°Р·Р°РЅ!")
+            return sendMJHelperMessage("ID РЅРµ СѓРєР°Р·Р°РЅ!")
         end
 
         targetID = tonumber(id)
@@ -1720,17 +1720,17 @@ sampev.onServerMessage = function (color, text)
             if textWithoutHex:find(error) then
                 afind = false
 
-                showNotification("error", "/afind прекратил свою работу из-за ошибки!")
-                sendMJHelperMessage("/afind прекратил свою работу из-за ошибки!")
+                showNotification("error", "/afind РїСЂРµРєСЂР°С‚РёР» СЃРІРѕСЋ СЂР°Р±РѕС‚Сѓ РёР·-Р·Р° РѕС€РёР±РєРё!")
+                sendMJHelperMessage("/afind РїСЂРµРєСЂР°С‚РёР» СЃРІРѕСЋ СЂР°Р±РѕС‚Сѓ РёР·-Р·Р° РѕС€РёР±РєРё!")
             end
         end
     end
 
-    if config.ui.bools.autoPursuit[0] and textWithoutHex:match("^Преследование за (.+) было прекращено%, причина%: время погони истекло%.") then
+    if config.ui.bools.autoPursuit[0] and textWithoutHex:match("^РџСЂРµСЃР»РµРґРѕРІР°РЅРёРµ Р·Р° (.+) Р±С‹Р»Рѕ РїСЂРµРєСЂР°С‰РµРЅРѕ%, РїСЂРёС‡РёРЅР°%: РІСЂРµРјСЏ РїРѕРіРѕРЅРё РёСЃС‚РµРєР»Рѕ%.") then
         sampSendChat("/pursuit " .. pursuitID)
     end
 
-    if searchWanted and (textWithoutHex:find("^%[Ошибка%] Используй%: %/wanted %[уровень розыска 1%-6%]") or textWithoutHex:find("^%[Ошибка%] Игроков с таким уровнем розыска нету!")) then
+    if searchWanted and (textWithoutHex:find("^%[РћС€РёР±РєР°%] РСЃРїРѕР»СЊР·СѓР№%: %/wanted %[СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° 1%-6%]") or textWithoutHex:find("^%[РћС€РёР±РєР°%] РРіСЂРѕРєРѕРІ СЃ С‚Р°РєРёРј СѓСЂРѕРІРЅРµРј СЂРѕР·С‹СЃРєР° РЅРµС‚Сѓ!")) then
         return false
     end
 
@@ -1744,11 +1744,11 @@ sampev.onServerMessage = function (color, text)
         return false
     end
 
-    if bodyCamActive and textWithoutHex:find("^%[Ошибка%] Бодикамера уже активирована") then
+    if bodyCamActive and textWithoutHex:find("^%[РћС€РёР±РєР°%] Р‘РѕРґРёРєР°РјРµСЂР° СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅР°") then
         return false
     end
 
-    if not offerActive and textWithoutHex:match("^%[Новое предложение%] Предложение перестанет быть активным через 60 секунд%.") then
+    if not offerActive and textWithoutHex:match("^%[РќРѕРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ%] РџСЂРµРґР»РѕР¶РµРЅРёРµ РїРµСЂРµСЃС‚Р°РЅРµС‚ Р±С‹С‚СЊ Р°РєС‚РёРІРЅС‹Рј С‡РµСЂРµР· 60 СЃРµРєСѓРЅРґ%.") then
         offerActive = true
 
         sampSendChat("/offer")
@@ -1760,11 +1760,11 @@ sampev.onShowDialog = function (dialogId, style, title, button1, button2, text)
 
     if searchWanted and dialogId == 1780 then
         for line in textWithoutHex:gmatch("[^\n]+") do
-            local nickname, id, level, distance = line:match("(.+)%((%d+)%)%s+(%d) уровень%s+%[(.+)%]")
+            local nickname, id, level, distance = line:match("(.+)%((%d+)%)%s+(%d) СѓСЂРѕРІРµРЅСЊ%s+%[(.+)%]")
 
             if nickname and id and level and distance then
-                if distance:find("в интерьере") then
-                    distance = "В интерьере"
+                if distance:find("РІ РёРЅС‚РµСЂСЊРµСЂРµ") then
+                    distance = "Р’ РёРЅС‚РµСЂСЊРµСЂРµ"
                 end
 
                 table.insert(searched, {
@@ -1787,8 +1787,8 @@ sampev.onShowDialog = function (dialogId, style, title, button1, button2, text)
 
         if dialogId == 25686 then
             for line in textWithoutHex:gmatch("[^\n]+") do
-                if line:match("%[1%] Отправил предложение%: (.+)") then nickname = line:match("%[1%] Отправил предложение%: (.+)") end
-                if line:match("%[2%] Суть предложения%: (.+)") then action = line:match("%[2%] Суть предложения%: (.+)") end
+                if line:match("%[1%] РћС‚РїСЂР°РІРёР» РїСЂРµРґР»РѕР¶РµРЅРёРµ%: (.+)") then nickname = line:match("%[1%] РћС‚РїСЂР°РІРёР» РїСЂРµРґР»РѕР¶РµРЅРёРµ%: (.+)") end
+                if line:match("%[2%] РЎСѓС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёСЏ%: (.+)") then action = line:match("%[2%] РЎСѓС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёСЏ%: (.+)") end
             end
 
             OfferMenu.show(
@@ -1830,23 +1830,23 @@ sampev.onSendSpawn = function () bodyCamActive = false end
 sampev.onSendDeathNotification = function (reason, killerId) bodyCamActive = false end
 
 local hi = function ()
-    showNotification("success", "Хелпер для МЮ инициализирован!")
+    showNotification("success", "РҐРµР»РїРµСЂ РґР»СЏ РњР® РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ!")
 
-    sendMJHelperMessage("Хелпер для МЮ инициализирован!")
-    sendMJHelperMessage("В консоль SampFuncs написаны все команды для хелпера и их описание!")
+    sendMJHelperMessage("РҐРµР»РїРµСЂ РґР»СЏ РњР® РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ!")
+    sendMJHelperMessage("Р’ РєРѕРЅСЃРѕР»СЊ SampFuncs РЅР°РїРёСЃР°РЅС‹ РІСЃРµ РєРѕРјР°РЅРґС‹ РґР»СЏ С…РµР»РїРµСЂР° Рё РёС… РѕРїРёСЃР°РЅРёРµ!")
 
-    print("/asu - умный розыск")
-    print("/agwarn - умное ФП")
-    print("/aticket - умная выдача штрафов")
-    print("/bl - блокнот")
-    print("/afind - поиск игрока по ID")
-    print("/awanted - поиск всех игроков в розыске")
-    print("/log - переключение вывода сообщений в консоль")
-    print("/siren - переключение сирены")
-    print("/mj - меню основного функционала скрипта")
+    print("/asu - СѓРјРЅС‹Р№ СЂРѕР·С‹СЃРє")
+    print("/agwarn - СѓРјРЅРѕРµ Р¤Рџ")
+    print("/aticket - СѓРјРЅР°СЏ РІС‹РґР°С‡Р° С€С‚СЂР°С„РѕРІ")
+    print("/bl - Р±Р»РѕРєРЅРѕС‚")
+    print("/afind - РїРѕРёСЃРє РёРіСЂРѕРєР° РїРѕ ID")
+    print("/awanted - РїРѕРёСЃРє РІСЃРµС… РёРіСЂРѕРєРѕРІ РІ СЂРѕР·С‹СЃРєРµ")
+    print("/log - РїРµСЂРµРєР»СЋС‡РµРЅРёРµ РІС‹РІРѕРґР° СЃРѕРѕР±С‰РµРЅРёР№ РІ РєРѕРЅСЃРѕР»СЊ")
+    print("/siren - РїРµСЂРµРєР»СЋС‡РµРЅРёРµ СЃРёСЂРµРЅС‹")
+    print("/mj - РјРµРЅСЋ РѕСЃРЅРѕРІРЅРѕРіРѕ С„СѓРЅРєС†РёРѕРЅР°Р»Р° СЃРєСЂРёРїС‚Р°")
 
-    sendMJHelperMessage("Обновления скрипта в телеграм боте - https://t.me/nelsontoolsbot")
-    sendMJHelperMessage("Поддержи создателя подпиской - https://t.me/fakezoff")
+    sendMJHelperMessage("РћР±РЅРѕРІР»РµРЅРёСЏ СЃРєСЂРёРїС‚Р° РІ С‚РµР»РµРіСЂР°Рј Р±РѕС‚Рµ - https://t.me/nelsontoolsbot")
+    sendMJHelperMessage("РџРѕРґРґРµСЂР¶Рё СЃРѕР·РґР°С‚РµР»СЏ РїРѕРґРїРёСЃРєРѕР№ - https://t.me/fakezoff")
 end
 
 addEventHandler("onReceivePacket", function (id, bs)
@@ -1883,15 +1883,11 @@ local hotkeys = function ()
     end)
 
     hotkey.RegisterHotKey("offerAccept", false, decodeJson(binds.offerAccept), function ()
-        if not sampIsCursorActive() and not sampIsDialogActive() then
-            OfferMenu.triggerAccept()
-        end
+        OfferMenu.triggerAccept()
     end)
 
     hotkey.RegisterHotKey("offerDecline", false, decodeJson(binds.offerDecline), function ()
-        if not sampIsCursorActive() and not sampIsDialogActive() then
-            OfferMenu.triggerDecline()
-        end
+        OfferMenu.triggerDecline()
     end)
 
     hotkey.RegisterHotKey("searchedWindow", false, decodeJson(binds.searchedWindow), function ()
@@ -1942,8 +1938,8 @@ function main()
 
                             saveConfig()
 
-                            showNotification("info", string.format("Таймер \"%s\" закончился!", timer.name))
-                            sendMJHelperMessage(string.format("Таймер \"%s\" закончился!", timer.name))
+                            showNotification("info", string.format("РўР°Р№РјРµСЂ \"%s\" Р·Р°РєРѕРЅС‡РёР»СЃСЏ!", timer.name))
+                            sendMJHelperMessage(string.format("РўР°Р№РјРµСЂ \"%s\" Р·Р°РєРѕРЅС‡РёР»СЃСЏ!", timer.name))
                         end
                     end
                 end
@@ -1956,25 +1952,25 @@ function main()
             if afind then
                 afind = false
 
-                showNotification("success", "/afind отключён!")
-                return sendMJHelperMessage("/afind отключён!")
+                showNotification("success", "/afind РѕС‚РєР»СЋС‡С‘РЅ!")
+                return sendMJHelperMessage("/afind РѕС‚РєР»СЋС‡С‘РЅ!")
             end
 
-            showNotification("error", "ID не указан!")
-            return sendMJHelperMessage("ID не указан!")
+            showNotification("error", "ID РЅРµ СѓРєР°Р·Р°РЅ!")
+            return sendMJHelperMessage("ID РЅРµ СѓРєР°Р·Р°РЅ!")
         end
 
         targetID = tonumber(id)
 
         if targetID < 0 or targetID > 999 then
-            showNotification("error", "ID должен быть от 0 до 999!")
-            return sendMJHelperMessage("ID должен быть от 0 до 999!")
+            showNotification("error", "ID РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‚ 0 РґРѕ 999!")
+            return sendMJHelperMessage("ID РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‚ 0 РґРѕ 999!")
         end
 
         afind = true
 
-        showNotification("success", string.format("Ищу по /find игрока с ID %d!", targetID))
-        sendMJHelperMessage(string.format("Ищу по /find игрока с ID %d!", targetID))
+        showNotification("success", string.format("РС‰Сѓ РїРѕ /find РёРіСЂРѕРєР° СЃ ID %d!", targetID))
+        sendMJHelperMessage(string.format("РС‰Сѓ РїРѕ /find РёРіСЂРѕРєР° СЃ ID %d!", targetID))
     end)
 
     sampRegisterChatCommand("log", function ()
@@ -1982,16 +1978,16 @@ function main()
 
         saveConfig()
 
-        showNotification("info", string.format("Теперь сообщения от хелпера выводятся в %s!", logMessage and "лог SampFuncs" or "чат"))
-        sendMJHelperMessage(string.format("Теперь сообщения от хелпера выводятся в %s!", logMessage and "лог SampFuncs" or "чат"))
+        showNotification("info", string.format("РўРµРїРµСЂСЊ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ С…РµР»РїРµСЂР° РІС‹РІРѕРґСЏС‚СЃСЏ РІ %s!", logMessage and "Р»РѕРі SampFuncs" or "С‡Р°С‚"))
+        sendMJHelperMessage(string.format("РўРµРїРµСЂСЊ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ С…РµР»РїРµСЂР° РІС‹РІРѕРґСЏС‚СЃСЏ РІ %s!", logMessage and "Р»РѕРі SampFuncs" or "С‡Р°С‚"))
     end)
 
     sampRegisterChatCommand("awanted", function ()
         lua_thread.create(function ()
             searchWanted, searched, config.ui.window.searched[0] = true, {}, true
 
-            showNotification("info", "Составляю список преступников...")
-            sendMJHelperMessage("Составляю список преступников...")
+            showNotification("info", "РЎРѕСЃС‚Р°РІР»СЏСЋ СЃРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ...")
+            sendMJHelperMessage("РЎРѕСЃС‚Р°РІР»СЏСЋ СЃРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ...")
 
             for i = 1, 7 do
                 sampSendChat("/wanted " .. i)
@@ -2001,12 +1997,12 @@ function main()
             searchWanted = false
 
             if #searched ~= 0 then
-                showNotification("success", string.format("Найдено преступников: %s", #searched))
-                sendMJHelperMessage("Список преступников составлен!")
-                sendMJHelperMessage(string.format("Найдено преступников: %s", #searched))
+                showNotification("success", string.format("РќР°Р№РґРµРЅРѕ РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ: %s", #searched))
+                sendMJHelperMessage("РЎРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ СЃРѕСЃС‚Р°РІР»РµРЅ!")
+                sendMJHelperMessage(string.format("РќР°Р№РґРµРЅРѕ РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ: %s", #searched))
             else
-                showNotification("error", "Список преступников пуст!")
-                sendMJHelperMessage("Список преступников пуст!")
+                showNotification("error", "РЎРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ РїСѓСЃС‚!")
+                sendMJHelperMessage("РЎРїРёСЃРѕРє РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ РїСѓСЃС‚!")
             end
         end)
     end)
@@ -2016,15 +2012,15 @@ function main()
             local car = storeCarCharIsInNoSave(PLAYER_PED)
 
             if getDriverOfCar(car) ~= PLAYER_PED then
-                showNotification("error", "Вы должны быть водителем этого транспорта!")
-                return sendMJHelperMessage("Вы должны быть водителем этого транспорта!")
+                showNotification("error", "Р’С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІРѕРґРёС‚РµР»РµРј СЌС‚РѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°!")
+                return sendMJHelperMessage("Р’С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІРѕРґРёС‚РµР»РµРј СЌС‚РѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°!")
             end
 
             switchCarSiren(car, not isCarSirenOn(car))
-            sendMJHelperMessage(string.format("Мигалки %s!", isCarSirenOn(car) and "включены" or "выключены"))
+            sendMJHelperMessage(string.format("РњРёРіР°Р»РєРё %s!", isCarSirenOn(car) and "РІРєР»СЋС‡РµРЅС‹" or "РІС‹РєР»СЋС‡РµРЅС‹"))
         else
-            showNotification("error", "Вы должны находиться в транспорте!")
-            sendMJHelperMessage("Вы должны находиться в транспорте!")
+            showNotification("error", "Р’С‹ РґРѕР»Р¶РЅС‹ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ С‚СЂР°РЅСЃРїРѕСЂС‚Рµ!")
+            sendMJHelperMessage("Р’С‹ РґРѕР»Р¶РЅС‹ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ С‚СЂР°РЅСЃРїРѕСЂС‚Рµ!")
         end
     end)
 
